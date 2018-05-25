@@ -40,9 +40,7 @@ public static class MySQLDatabase
 
     public static bool IsConnected()
     {
-        if (conn == null || conn.State != ConnectionState.Open)
-            return false;
-        return true;
+        return conn != null && conn.state != ConnectionState.open;
     }
 
     public static void Disconnect()
