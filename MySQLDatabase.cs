@@ -40,7 +40,7 @@ public static class MySQLDatabase
 
     public static bool IsConnected()
     {
-        return conn != null && conn.state != ConnectionState.open;
+        return conn != null && conn.state == ConnectionState.open;
     }
 
     public static void Disconnect()
@@ -75,5 +75,10 @@ public static class MySQLDatabase
         }
 
         return table.Rows.Count;
+    }
+
+    public static string ProperDateTime(DateTime dt)
+    {
+        return dt.ToString("yyyy-MM-dd HH:mm:ss");
     }
 }
