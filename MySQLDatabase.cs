@@ -25,15 +25,7 @@ public static class MySQLDatabase
             "SSLMode=None";
 
         conn = new MySqlConnection(connStr);
-
-        try
-        {
-            conn.Open();
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message, ex.Source);
-        }
+        conn.Open();
 
         return IsConnected();
     }
@@ -58,27 +50,25 @@ public static class MySQLDatabase
         if (!IsConnected())
             return 0;
 
-        try
-        {
-            MySqlCommand cmd = new MySqlCommand(statement, conn);
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+        MySqlCommand cmd = new MySqlCommand(statement, conn);
+        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
-            if (table != null)
-                table.Dispose();
+        if (table != null)
+            table.Dispose();
 
-            table = new DataTable();
-            da.Fill(table);
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message, ex.Source);
-        }
+        table = new DataTable();
+        da.Fill(table);
 
         return table.Rows.Count;
     }
 
-    public static string ProperDateTime(DateTime dt)
+    public static string DateTime(DateTime dt)
     {
         return dt.ToString("yyyy-MM-dd HH:mm:ss");
+    }
+    
+    public static string CleanString(string input)
+    {
+        return MySqlHelper.EscapeString(input);
     }
 }
