@@ -65,7 +65,7 @@ public static class MySQLDatabase
     {
         return dt.ToString("yyyy-MM-dd HH:mm:ss");
     }
-    
+
     public static string CleanString(string input)
     {
         return MySqlHelper.EscapeString(input);
