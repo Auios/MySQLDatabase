@@ -21,7 +21,8 @@ public static class MySQLDatabase
             "Pwd=" + password + ";" +
             "Persistsecurityinfo=True;" +
             "Convert Zero Datetime=True;" +
-            "SSLMode=None";
+            "SSLMode=None;" +
+            "charset=utf8";
 
         conn = new MySqlConnection(connStr);
         conn.Open();
@@ -47,7 +48,7 @@ public static class MySQLDatabase
     public static int Query(string statement)
     {
         if (!IsConnected())
-            return 0;
+            throw new Exception("MySQLDatabase is not connected");
 
         MySqlCommand cmd = new MySqlCommand(statement, conn);
         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
