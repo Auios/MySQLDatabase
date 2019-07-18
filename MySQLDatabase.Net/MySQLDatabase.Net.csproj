@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{622DEF90-8B91-4393-B633-42DB5E0D1FA2}</ProjectGuid>
+    <ProjectGuid>{556DFAC2-FB41-4143-87E2-7853C3785E8B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>MySQLDatabase</RootNamespace>
     <AssemblyName>MySQLDatabase</AssemblyName>
