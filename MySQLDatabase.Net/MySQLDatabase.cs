@@ -2,13 +2,13 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 
-public static class MySQLDatabase
+public class MySQLDatabase
 {
-    private static MySqlConnection conn;
-    public static DataTable table;
+    private MySqlConnection conn;
+    public DataTable table;
 
 
-    public static bool Connect(string server, int port, string database, string userID, string password)
+    public bool Connect(string server, int port, string database, string userID, string password)
     {
         if (IsConnected())
             return false;
@@ -30,12 +30,12 @@ public static class MySQLDatabase
         return IsConnected();
     }
 
-    public static bool IsConnected()
+    public bool IsConnected()
     {
         return conn != null && conn.State == ConnectionState.Open;
     }
 
-    public static void Disconnect()
+    public void Disconnect()
     {
         if (IsConnected())
         {
@@ -45,7 +45,7 @@ public static class MySQLDatabase
         }
     }
 
-    public static int Query(string statement)
+    public int Query(string statement)
     {
         if (!IsConnected())
             throw new Exception("MySQLDatabase is not connected");
@@ -62,12 +62,12 @@ public static class MySQLDatabase
         return table.Rows.Count;
     }
 
-    public static string DateTime(DateTime dt)
+    public string DateTime(DateTime dt)
     {
         return dt.ToString("yyyy-MM-dd HH:mm:ss");
     }
 
-    public static string CleanString(string input)
+    public string CleanString(string input)
     {
         return MySqlHelper.EscapeString(input);
     }
