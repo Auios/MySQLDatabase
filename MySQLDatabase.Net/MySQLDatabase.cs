@@ -7,7 +7,6 @@ public class MySQLDatabase
     private MySqlConnection conn;
     public DataTable table;
 
-
     public bool Connect(string server, int port, string database, string userID, string password)
     {
         if (IsConnected())
