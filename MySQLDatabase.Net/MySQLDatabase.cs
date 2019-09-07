@@ -58,6 +58,9 @@ public class MySQLDatabase
         table = new DataTable();
         da.Fill(table);
 
+        cmd.Dispose();
+        da.Dispose();
+
         return table.Rows.Count;
     }
 
